@@ -19,7 +19,8 @@ docker build -t geoapp .
 keys.sh
 
 :: # Log into docker with read-write privileges
-docker login --username tmf77 -p %DOCKERDEV%
+docker login --username tmf77 
+:: #-p %DOCKERDEV%
 
 :: # Assign it a tag
 docker tag geoapp tmf77/geoshiny-verse:version1
