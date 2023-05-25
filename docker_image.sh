@@ -20,7 +20,6 @@ keys.sh
 
 :: # Log into docker with read-write privileges
 docker login --username tmf77
-
 :: # Assign it a tag
 docker tag tmf77/geoshiny-verse:version1 tmf77/geoshiny-verse:version1
 

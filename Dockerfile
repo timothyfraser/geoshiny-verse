@@ -38,6 +38,7 @@ RUN R -e "install.packages('optparse')"
 RUN R -e "install.packages('googledrive')"
 RUN R -e "install.packages('remotes')" 
 RUN R -e "remotes::install_github('datalorax/equatiomatic', ref = '29ff168', upgrade = 'never')"
+RUN R -e "install.packages('flexdashboard')"
 
 # Set shiny-server/app as working directory
 WORKDIR /srv/shiny-server/app
