@@ -36,33 +36,17 @@ RUN R -e "install.packages('shinycssloaders')"
 RUN R -e "install.packages('viridis')"
 RUN R -e "install.packages('optparse')"
 RUN R -e "install.packages('googledrive')"
+RUN R -e "install.packages('remotes')" 
+RUN R -e "remotes::install_github('datalorax/equatiomatic', ref = '29ff168', upgrade = 'never')"
 
 # Set shiny-server/app as working directory
 WORKDIR /srv/shiny-server/app
-
-# Copy into this directory
-# COPY app .
 
 # Set shiny-server/ as working directory
 WORKDIR /srv/shiny-server/
 
 # Copy index into /srv/shiny-server
 COPY index.html .
-
-# Setup cache directory
-WORKDIR /home
-RUN mkdir /home/cache
-
-RUN sudo addgroup shiny-apps
-# RUN useradd shiny # already exists
-RUN sudo usermod -aG shiny-apps root
-RUN sudo usermod -aG shiny-apps shiny
-
-RUN sudo chown -R root:shiny-apps /home/cache/
-RUN sudo chown -R shiny:shiny-apps /home/cache/
-
-RUN sudo chmod g+w .
-RUN sudo chmod g+s .
 
 WORKDIR /srv/shiny-server
 
